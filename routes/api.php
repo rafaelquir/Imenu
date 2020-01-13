@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Http\Request;
+use App\User;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,5 +16,6 @@ use Illuminate\Http\Request;
 */
 
 Route::middleware('auth:api')->get('/user/{id}', function (Request $request) {
-    return $request->user();
+    return User::find($request->id);
 });
+Route::post('/user/create', 'Auth\RegisterController@create');
