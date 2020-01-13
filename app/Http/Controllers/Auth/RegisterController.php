@@ -74,4 +74,6 @@ class RegisterController extends Controller
             'api_token' => bcrypt(Str::random(25)),
         ]);
     }
+
+    //TO DO ACTUALIZAR Y ELIMINAR
 }
