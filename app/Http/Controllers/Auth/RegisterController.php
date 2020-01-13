@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class RegisterController extends Controller
 {
@@ -75,5 +76,34 @@ class RegisterController extends Controller
         ]);
     }
 
-    //TO DO ACTUALIZAR Y ELIMINAR
+    //TO DO ACTUALIZAR
+
+    protected function delete($id){
+        $response = array('error_code' => 404, 'error_msg' => 'User '.$id.' not found');
+        $user = User::find($id);
+
+        if (!empty($user)) {
+            try{
+                $user->delete();
+                $response = array('error_code' => 200, 'error_msg' => '');
+                Log::info('User delete');
+
+            } catch (\Exception $e) {
+
+                Log::alert('Function: Delete User, Message: '.$e);
+                $response = array('error_code' => 500, 'error_msg' => "Server connection error");
+
+            }
+        }
+    }
+
+    protected function update(Request $request, $id){
+        $response = array('error_code' => 400, 'error_msg' => 'User '.$id.' not found');
+        $user = User::find($id);
+
+        if (!empty($user)) {
+            //TO DO comprobaciones del update(correo no existente ya)
+        }
+    }
+
 }
