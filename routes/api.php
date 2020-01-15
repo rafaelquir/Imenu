@@ -15,7 +15,9 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-Route::middleware('auth:api')->get('/user/{id}', function (Request $request) {
+Route::middleware('auth:api')->get('user/{id}', function (Request $request) {
     return User::find($request->id);
 });
-Route::post('/user/create', 'Auth\RegisterController@create');
+Route::post('user/create', 'Auth\RegisterController@create');
+
+Route::middleware('auth:api')->put('user/modify/{id}', 'UserController@update');

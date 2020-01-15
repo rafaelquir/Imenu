@@ -67,13 +67,11 @@ class RegisterController extends Controller
     protected function create(Request $data)
     {
         return User::create([
-            'name' => $data->name,
-            'lastName' => $data->lastName,
+            'name' => ucfirst(strtolower($data->name)),
+            'lastName' => ucfirst(strtolower($data->lastName)),
             'email' => $data->email,
             'password' => Hash::make($data->password),
             'api_token' => bcrypt(Str::random(25)),
         ]);
     }
-
-    //TO DO ACTUALIZAR Y ELIMINAR
 }
