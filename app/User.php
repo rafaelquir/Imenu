@@ -19,6 +19,8 @@ class User extends Authenticatable
         'name', 'lastName','email', 'password', 'api_token',
     ];
 
+    protected $primaryKey = 'email';
+
     /**
      * The attributes that should be hidden for arrays.
      *
