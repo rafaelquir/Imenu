@@ -23,7 +23,7 @@ Route::post('/user/create', 'Auth\RegisterController@create');
 
 Route::get('/login', function (Request $request) {
     $user = User::find($request->email);
-    if ($request->password == Hash::check('plain-text', $user->password)) {
+    if (Hash::check($request->password, $user->password)) {
         $loginUser = [
             'serverRequest'=> 200,
             'name'=>$user->name,
