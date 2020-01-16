@@ -26,3 +26,5 @@ Route::middleware('auth:api')->put('user/modify/{id}', 'UserController@update');
 
 Route::get('/login', 'Auth\LoginController@login');
 
+Route::get('password/reset', 'Auth\ResetPasswordController@getEmail');
+Route::post('password/reset', 'Auth\ResetPasswordController@postEmail');
