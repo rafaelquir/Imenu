@@ -13,8 +13,8 @@ class CreateAvatarTable extends Migration
      */
     public function up()
     {
-        Schema::create('avatar', function (Blueprint $table) {
-            $table->bigIncrements('id');
+        Schema::create('avatares', function (Blueprint $table) {
+            $table->increments('id');
             $table->string('url');
             $table->timestamps();
         });
@@ -27,6 +27,6 @@ class CreateAvatarTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('avatar');
+        Schema::dropIfExists('avatares');
     }
 }
