@@ -1,7 +1,9 @@
 <?php
 
+use Illuminate\Support\Str;
 use Illuminate\Database\Seeder;
-
+use Illuminate\Support\Facades\DB;
+use App\User;
 class DatabaseSeeder extends Seeder
 {
     /**
@@ -11,10 +13,6 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('users')->insert([
-            'name' => Str::random(10),
-            'email' => Str::random(10).'@gmail.com',
-            'password' => bcrypt('password'),
-        ]);
+       factory(user::class, 50 )->create();
     }
 }
