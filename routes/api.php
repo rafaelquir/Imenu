@@ -23,6 +23,7 @@ Route::middleware('auth:api')->get('user/{id}', function (Request $request) {
 Route::post('register', 'Auth\RegisterController@create');
 //Update user//
 Route::middleware('auth:api')->put('user/modify/{id}', 'UserController@update');
+Route::middleware('auth:api')->delete('users/delete/{id}', 'UserController@delete');
 
 Route::post('/login', 'Auth\LoginController@login');
 
