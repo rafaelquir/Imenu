@@ -63,17 +63,29 @@ class RegisterController extends Controller
      * Create a new user instance after a valid registration.
      *
      * @param  array  $data
-     * @return \App\User
+     * @return array
      */
     protected function create(Request $data)
     {
-        return User::create([
-            'name' => ucfirst(strtolower($data->name)),
-            'lastName' => ucfirst(strtolower($data->lastName)),
-            'email' => $data->email,
-            'password' => Hash::make($data->password),
-            'api_token' => bcrypt(Str::random(25)),
-            'avatar_id' => $data->avatar_id,
-        ]);
+        $status = array('error_code'=>400,'user'=>'');
+        $user = User::find($data->email);
+        if(!empty($user)){
+            //En caso de que exista el usuario, no devolvera un usuario creado y cambiara el codigo de error a 304//
+            $status['error_code'] = 304;
+        }else{
+            //Si no existe el usuario nuevo en base de datos, devolvera un usuario creado y ademas el codigo 200//
+            $user =
+            User::create([
+                'name' => ucfirst(strtolower($data->name)),
+                'lastName' => ucfirst(strtolower($data->lastName)),
+                'email' => $data->email,
+                'password' => Hash::make($data->password),
+                'api_token' => bcrypt(Str::random(25)),
+                'avatar_id' => $data->avatar_id,
+            ]);
+            $status['error_code'] = 200;
+           $status['user']= $user;
+        }
+        return $status;
     }
 }
