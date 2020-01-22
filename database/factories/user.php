@@ -14,6 +14,6 @@ $factory->define(User::class, function (Faker $faker) {
         'lastName' => $faker->name,
         'password' => bcrypt('password'),
         'api_token' => bcrypt('password'),
-        'avatar_id' => rand(0,4),
+        'avatar_id' => rand(1,5),
     ];
 });

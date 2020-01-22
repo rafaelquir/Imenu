@@ -24,7 +24,21 @@ Route::post('register', 'Auth\RegisterController@create');
 //Update user//
 Route::middleware('auth:api')->put('user/modify/{id}', 'UserController@update');
 
-Route::get('/login', 'Auth\LoginController@login');
+Route::post('/login', 'Auth\LoginController@login');
 
-Route::get('password/reset', 'Auth\ResetPasswordController@getEmail');
-Route::post('password/reset', 'Auth\ResetPasswordController@postEmail');
+Route::post('/password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail');
+
+Route::get('enviar', ['as' => 'enviar', function () {
+
+    $data = ['link' => 'https://cev.com,'];
+
+    \Mail::send('emails.notificacion', $data, function ($message) {
+
+        $message->from('email@cev.com', 'cev.com');
+
+        $message->to('user@example.com')->subject('Notificación');
+
+    });
+
+    return "Se envío el email";
+}]);

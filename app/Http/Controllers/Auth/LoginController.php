@@ -51,6 +51,7 @@ class LoginController extends Controller
                 'lastName'=>$user->lastName,
                 'id'=>$user->id,
                 'api_token'=>$user->api_token,
+                'avatar_id'=>$user->avatar_id
             ];
             return $loginUser;
         }else{
