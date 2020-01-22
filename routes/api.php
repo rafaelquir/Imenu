@@ -23,8 +23,11 @@ Route::middleware('auth:api')->get('user/{id}', function (Request $request) {
 Route::post('register', 'Auth\RegisterController@create');
 //Update user//
 Route::middleware('auth:api')->put('user/modify/{id}', 'UserController@update');
+//Delete user//
+Route::middleware('auth:api')->delete('user/delete/{id}', 'UserController@delete');
 
 Route::post('/login', 'Auth\LoginController@login');
+<<<<<<< HEAD
 
 Route::post('/password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail');
 
@@ -42,3 +45,11 @@ Route::get('enviar', ['as' => 'enviar', function () {
 
     return "Se envío el email";
 }]);
+=======
+//Create restaurante
+Route::post('restaurantes/create', 'RestauranteController@create');
+//Delete restaurante
+Route::delete('restaurantes/delete/{id}', 'RestauranteController@delete');
+//Update restaurante
+Route::put('restaurantes/update/{id}', 'RestauranteController@update');
+>>>>>>> 5160bc4294754172ad10621a002ef3663a5b5ea4
