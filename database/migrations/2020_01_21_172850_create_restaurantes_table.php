@@ -14,7 +14,12 @@ class CreateRestaurantesTable extends Migration
     public function up()
     {
         Schema::create('restaurantes', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->increments('id');
+            $table->string('name');
+            $table->string('address');
+            $table->float('latitude');
+            $table->float('longitude');
+            $table->integer('phone_number');
             $table->timestamps();
         });
     }
