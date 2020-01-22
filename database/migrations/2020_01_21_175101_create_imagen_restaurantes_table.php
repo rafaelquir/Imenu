@@ -15,6 +15,9 @@ class CreateImagenRestaurantesTable extends Migration
     {
         Schema::create('imagen_restaurantes', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('URL');
+            $table->unsignedInteger('restaurante_id');
+            $table->foreign('restaurante_id')->references('id')->on('restaurantes');
             $table->timestamps();
         });
     }
