@@ -28,3 +28,5 @@ Route::middleware('auth:api')->delete('user/delete/{id}', 'UserController@delete
 
 Route::post('/login', 'Auth\LoginController@login');
 
+Route::get('tipo', 'TipoController@listarTipos');
+Route::post('tipo/create', 'TipoController@anadirTipos');
