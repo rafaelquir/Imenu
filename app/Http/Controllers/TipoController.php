@@ -48,9 +48,9 @@ class TipoController extends Controller
          return response()->json($response);
         }
 
-        public function borrarTipos(Request $resquest, $id) {
+        public function borrarTipos($id) {
           $response = array('error_code'=>200, 'error_msg'=> 'Tipo de restaurante borrado');
-          $tipo=tipo::find($id);
+          $tipo=Tipo::find($id);
           $tipo->delete();
           return response()->json($response);
 
