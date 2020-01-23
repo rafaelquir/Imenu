@@ -39,7 +39,7 @@ class TipoController extends Controller
 
 
     public function update(Request $request, $id ) {
-        $response = array('error_code'=> 404, 'error_msg'=> 'Tipo '.$id.' not found');
+        $response = array('error_code'=> 404, 'error_msg'=> 'Type '.$id.' not found');
         $tipo = Tipo::find($id);
 
         if (isset($request) && isset($id) && !empty($tipo)) {
@@ -58,7 +58,7 @@ class TipoController extends Controller
     }
 
     public function delete($id) {
-        $response = array('error_code'=>404, 'error_msg'=> 'Tipo '.$id.' not found');
+        $response = array('error_code'=>404, 'error_msg'=> 'Type '.$id.' not found');
         $tipo = Tipo::find($id);
 
         if (!empty($tipo)) {
