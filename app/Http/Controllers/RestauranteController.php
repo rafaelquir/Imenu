@@ -46,7 +46,7 @@ class RestauranteController extends Controller
 
             } catch (\Exception $e) {
 
-                Log::alert('Function: create Restaurante, Message: '.$e);
+                Log::alert('Function: Create Restaurante, Message: '.$e);
                 $response = array('error_code' => 500, 'error_msg' => "Server connection error");
 
             }
@@ -91,6 +91,7 @@ class RestauranteController extends Controller
             } catch (\Exception $e) {
                 Log::alert('Function: Update Restaurante, Message: '.$e);
                 $response = array('error_code' => 500, 'error_msg' => "Server connection error");
+
             }
         }
         return response()->json($response);
