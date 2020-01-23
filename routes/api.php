@@ -1,5 +1,6 @@
 <?php
 
+use App\ImagenRestaurante;
 use Illuminate\Http\Request;
 use App\User;
 use Illuminate\Support\Facades\Auth;
@@ -29,6 +30,15 @@ Route::middleware('auth:api')->delete('user/delete/{id}', 'UserController@delete
 Route::post('/login', 'Auth\LoginController@login');
 
 Route::post('/password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail');
+
+//Mostrar tipos de comida
+Route::get('tipo', 'TipoController@listarTipos');
+//Crear nuevo tipo
+Route::post('tipo/create', 'TipoController@anadirTipos');
+//Borrar un tipo de comida
+Route::delete('tipo/delete/{id}', 'TipoController@borrarTipos');
+//Editar un tipo de comida
+Route::put('tipo/update/{id}', 'TipoController@modificarTipos');
 
 Route::get('enviar', ['as' => 'enviar', function () {
 
@@ -60,3 +70,10 @@ Route::middleware('auth:api')->post('tipo/create', 'TipoController@create');
 Route::middleware('auth:api')->delete('tipo/delete/{id}', 'TipoController@delete');
 //Update tipo
 Route::middleware('auth:api')->put('tipo/update/{id}', 'TipoController@update');
+
+//Crear una imagen
+Route::post('imagenRestaurante/create', 'ImagenRestauranteController@anadirfotos');
+//Borrar una imagen
+Route::delete('ImagenRestaurante/delete/{id}', 'ImagenRestauranteController@borrarImagenes');
+
+
