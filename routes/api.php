@@ -29,10 +29,6 @@ Route::middleware('auth:api')->delete('user/delete/{id}', 'UserController@delete
 Route::post('/login', 'Auth\LoginController@login');
 
 Route::post('/password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail');
-Route::get('tipo', 'TipoController@listarTipos');
-Route::post('tipo/create', 'TipoController@anadirTipos');
-Route::delete('tipo/delete/{id}', 'TipoController@borrarTipos');
-Route::put('tipo/update/{id}', 'TipoController@modificarTipos');
 
 Route::get('enviar', ['as' => 'enviar', function () {
 
@@ -49,8 +45,18 @@ Route::get('enviar', ['as' => 'enviar', function () {
     return "Se envío el email";
 }]);
 //Create restaurante
-Route::post('restaurantes/create', 'RestauranteController@create');
+Route::middleware('auth:api')->post('restaurantes/create', 'RestauranteController@create');
 //Delete restaurante
-Route::delete('restaurantes/delete/{id}', 'RestauranteController@delete');
+Route::middleware('auth:api')->delete('restaurantes/delete/{id}', 'RestauranteController@delete');
 //Update restaurante
-Route::put('restaurantes/update/{id}', 'RestauranteController@update');
+Route::middleware('auth:api')->put('restaurantes/update/{id}', 'RestauranteController@update');
+
+
+//Get tipo
+Route::middleware('auth:api')->get('tipo', 'TipoController@getAll');
+//Create tipo
+Route::middleware('auth:api')->post('tipo/create', 'TipoController@create');
+//Delete tipo
+Route::middleware('auth:api')->delete('tipo/delete/{id}', 'TipoController@delete');
+//Update tipo
+Route::middleware('auth:api')->put('tipo/update/{id}', 'TipoController@update');
