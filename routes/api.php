@@ -30,3 +30,5 @@ Route::post('/login', 'Auth\LoginController@login');
 
 Route::get('tipo', 'TipoController@listarTipos');
 Route::post('tipo/create', 'TipoController@anadirTipos');
+Route::delete('tipo/delete/{id}', 'TipoController@borrarTipos');
+Route::put('tipo/update/{id}', 'TipoController@modificarTipos');
