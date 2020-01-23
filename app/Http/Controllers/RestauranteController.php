@@ -43,6 +43,7 @@ class RestauranteController extends Controller
                 $restaurante->tipo_id = $request->tipo_id;
                 $restaurante->save();
                 $response = array('error_code' => 200, 'error_msg' => 'OK');
+                Log::info('Restaurant '.$restaurante->name.' create');
 
             } catch (\Exception $e) {
 
@@ -63,6 +64,7 @@ class RestauranteController extends Controller
             try {
                 $restaurante->delete();
                 $response = array('error_code' => 200, 'error_msg' => 'OK');
+                Log::info('Restaurant delete');
 
             } catch (\Exception $e) {
                 Log::alert('Function: Delete Restaurante, Message: '.$e);
@@ -87,6 +89,7 @@ class RestauranteController extends Controller
                 $restaurante->tipo_id = $request->tipo_id ? $request->tipo_id : $restaurante->tipo_id;
                 $restaurante->save();
                 $response = array('error_code' => 200, 'error_msg' => 'OK');
+                Log::info('Restaurant '.$restaurante->name.' update');
 
             } catch (\Exception $e) {
                 Log::alert('Function: Update Restaurante, Message: '.$e);

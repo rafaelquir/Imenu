@@ -26,6 +26,7 @@ class TipoController extends Controller
                 $tipo->name = ucfirst(strtolower($request->name));
                 $tipo->save();
                 $response = array('error_code'=>200, 'error_msg'=> 'OK');
+                Log::info('Type '.$tipo->name.' create');
 
             } catch (\Exception $e) {
 
@@ -47,6 +48,7 @@ class TipoController extends Controller
                 $tipo->name = $request->name ? ucfirst(strtolower($request->name)) : $tipo->name;
                 $tipo->save();
                 $response = array('error_code' => 200, 'error_msg' => 'OK');
+                Log::info('Type '.$tipo->name.' update');
 
             } catch (\Exception $e) {
                 Log::alert('Function: Update Tipo, Message: '.$e);
@@ -65,6 +67,7 @@ class TipoController extends Controller
             try {
                 $tipo->delete();
                 $response = array('error_code' => 200, 'error_msg' => 'OK');
+                Log::info('Type delete');
 
             } catch (\Exception $e) {
                 Log::alert('Function: Delete Tipo, Message: '.$e);

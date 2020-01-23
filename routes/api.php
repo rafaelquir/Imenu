@@ -77,3 +77,6 @@ Route::post('imagenRestaurante/create', 'ImagenRestauranteController@anadirfotos
 Route::delete('ImagenRestaurante/delete/{id}', 'ImagenRestauranteController@borrarImagenes');
 
 
+
+//Update imagen restaurante
+Route::put('imagenRestaurante/update/{id}', 'ImagenRestauranteController@update');

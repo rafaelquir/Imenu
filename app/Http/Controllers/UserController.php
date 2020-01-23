@@ -41,6 +41,8 @@ class UserController extends Controller
                 $user->lastName =$request->lastName ? ucfirst(strtolower($request->lastName)) : $user->lastName;
                 $user->save();
                 $response = array('error_code' => 200, 'error_msg' => 'OK');
+                Log::info('User '.$user->name.' '.$user->lastName.' update');
+
             } catch (\Exception $e) {
                 Log::alert('Function: Update User, Message: '.$e);
                 $response = array('error_code' => 500, 'error_msg' => "Server connection error");
@@ -50,5 +52,4 @@ class UserController extends Controller
         return response()->json($response);
     }
 
-    //TO DO Funcion para contraseña
 }
