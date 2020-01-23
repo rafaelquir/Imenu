@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Restaurante;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 
 class RestauranteController extends Controller
@@ -98,6 +99,16 @@ class RestauranteController extends Controller
             }
         }
         return response()->json($response);
+    }
+    //TO DO url de imagen nombre tipo y longitu y latitud
+    public function home(){
+        $restaurante = DB::table('restaurantes as r')
+            ->select('r.name', 't.name as type', 'i.URL as image_URL', 'r.latitude', 'r.longitude')
+            ->join('tipos as t', 'r.tipo_id', '=', 't.id')
+            ->leftJoin('imagen_restaurantes as i', 'i.restaurante_id', '=', 'r.id')
+            ->get();
+
+        return response()->json($restaurante);
     }
 
 }

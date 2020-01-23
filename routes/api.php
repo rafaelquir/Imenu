@@ -77,3 +77,5 @@ Route::middleware('auth:api')->post('imagenRestaurante/create', 'ImagenRestauran
 Route::middleware('auth:api')->delete('imagenRestaurante/delete/{id}', 'ImagenRestauranteController@delete');
 //Update imagen restaurante
 Route::middleware('auth:api')->put('imagenRestaurante/update/{id}', 'ImagenRestauranteController@update');
+
+Route::get('homeRestaurante', 'RestauranteController@home');
