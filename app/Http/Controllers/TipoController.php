@@ -29,7 +29,6 @@ class TipoController extends Controller
                 Log::info('Type '.$tipo->name.' create');
 
             } catch (\Exception $e) {
-
                 Log::alert('Function: Create Tipo, Message: '.$e);
                 $response = array('error_code' => 500, 'error_msg' => "Server connection error");
 
@@ -72,6 +71,7 @@ class TipoController extends Controller
             } catch (\Exception $e) {
                 Log::alert('Function: Delete Tipo, Message: '.$e);
                 $response = array('error_code' => 500, 'error_msg' => "Server connection error");
+
             }
         }
         return response()->json($response);

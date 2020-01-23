@@ -71,12 +71,9 @@ Route::middleware('auth:api')->delete('tipo/delete/{id}', 'TipoController@delete
 //Update tipo
 Route::middleware('auth:api')->put('tipo/update/{id}', 'TipoController@update');
 
-//Crear una imagen
-Route::post('imagenRestaurante/create', 'ImagenRestauranteController@anadirfotos');
-//Borrar una imagen
-Route::delete('ImagenRestaurante/delete/{id}', 'ImagenRestauranteController@borrarImagenes');
-
-
-
+//Create imagen restaurante
+Route::post('imagenRestaurante/create', 'ImagenRestauranteController@create');
+//Delete imagen restaurante
+Route::delete('ImagenRestaurante/delete/{id}', 'ImagenRestauranteController@delete');
 //Update imagen restaurante
 Route::put('imagenRestaurante/update/{id}', 'ImagenRestauranteController@update');
