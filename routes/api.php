@@ -60,3 +60,6 @@ Route::middleware('auth:api')->post('tipo/create', 'TipoController@create');
 Route::middleware('auth:api')->delete('tipo/delete/{id}', 'TipoController@delete');
 //Update tipo
 Route::middleware('auth:api')->put('tipo/update/{id}', 'TipoController@update');
+
+//Update imagen restaurante
+Route::put('imagenRestaurante/update/{id}', 'ImagenRestauranteController@update');
