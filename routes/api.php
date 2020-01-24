@@ -60,7 +60,10 @@ Route::middleware('auth:api')->post('restaurantes/create', 'RestauranteControlle
 Route::middleware('auth:api')->delete('restaurantes/delete/{id}', 'RestauranteController@delete');
 //Update restaurante
 Route::middleware('auth:api')->put('restaurantes/update/{id}', 'RestauranteController@update');
-
+//Get datos del home
+Route::get('homeRestaurante', 'RestauranteController@home');
+//Get datos del restaurante
+Route::get('restaurante', 'RestauranteController@returnAll');
 
 //Get tipo
 Route::middleware('auth:api')->get('tipo', 'TipoController@getAll');
@@ -77,5 +80,3 @@ Route::middleware('auth:api')->post('imagenRestaurante/create', 'ImagenRestauran
 Route::middleware('auth:api')->delete('imagenRestaurante/delete/{id}', 'ImagenRestauranteController@delete');
 //Update imagen restaurante
 Route::middleware('auth:api')->put('imagenRestaurante/update/{id}', 'ImagenRestauranteController@update');
-
-Route::get('homeRestaurante', 'RestauranteController@home');
